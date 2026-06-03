@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body bg-midnight-900 text-midnight-50 antialiased;
+  }
+
+  ::selection {
+    @apply bg-gold-500/30 text-gold-200;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-midnight-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-midnight-500 rounded-full;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-midnight-800 border border-midnight-600/40 rounded-2xl p-5;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:border-gold-500/30 hover:shadow-[0_0_30px_-8px_rgba(212,168,83,0.15)];
+  }
+
+  .input-field {
+    @apply w-full px-3.5 py-2.5 bg-midnight-700 border border-midnight-500/60 rounded-xl text-sm text-midnight-50 placeholder-midnight-300/60
+           focus:outline-none focus:border-gold-500/50 focus:ring-1 focus:ring-gold-500/20 transition-all duration-200;
+  }
+
+  .select-field {
+    @apply input-field appearance-none cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply w-full py-2.5 bg-gold-500/90 hover:bg-gold-500 text-midnight-900 font-semibold rounded-xl text-sm
+           transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200;
+  }
+
+  .nav-link {
+    @apply px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200;
+  }
+
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+  .stagger-5 { animation-delay: 0.25s; }
+}
