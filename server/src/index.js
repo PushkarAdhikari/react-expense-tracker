@@ -7,7 +7,6 @@ import transactionRoutes from "./routes/transactions.js";
 import reportRoutes from "./routes/reports.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +18,12 @@ app.use("/api/reports", reportRoutes);
 
 app.get("/api/health", (_, res) => res.json({ status: "ok" }));
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const isServerless = process.env.VERCEL === "1";
+if (!isServerless) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+export default app;
